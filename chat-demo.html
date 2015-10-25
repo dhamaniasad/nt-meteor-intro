@@ -1,7 +1,8 @@
 <body>
 <div class="container">
     <header>
-
+        <h1>Nagpur Techies Chat App</h1>
+        {{> loginButtons }}
     </header>
     <ul>
         {{#each recentMessages}}
@@ -12,11 +13,11 @@
         {{/each}}
     </ul>
     <footer>
-
+        {{# if currentUser}}
         <form class="new-message">
             <input type="text" name="text" placeholder="Add a message" />
         </form>
-
+        {{/if}}
     </footer>
 </div>
 </body>

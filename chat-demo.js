@@ -14,14 +14,14 @@ if (Meteor.isClient) {
 
 Meteor.methods({
     sendMessage: function (message) {
-        // if (! Meteor.userId()) {
-        //   throw new Meteor.Error("not-authorized");
-        // }
+         if (! Meteor.userId()) {
+           throw new Meteor.Error("not-authorized");
+         }
 
         Messages.insert({
             text: message,
             createdAt: new Date(),
-            username: "anonymous"
+            username: Meteor.user().username
         });
     }
 });
@@ -44,7 +44,7 @@ if (Meteor.isClient) {
         }
     });
 
-    // Accounts.ui.config({
-    //   passwordSignupFields: "USERNAME_ONLY"
-    // });
+     Accounts.ui.config({
+       passwordSignupFields: "USERNAME_ONLY"
+     });
 }
